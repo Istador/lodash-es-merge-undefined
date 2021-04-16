@@ -1,0 +1,39 @@
+{
+  "name": "lodash-es-merge-undefined",
+  "version": "1.0.1",
+  "description": "a version of merge that does overwrite undefined values",
+  "type": "module",
+  "jsnext:main": "index.js",
+  "main": "index.js",
+  "module": "index.js",
+  "sideEffects": false,
+  "scripts": {
+    "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Istador/lodash-es-merge-undefined.git"
+  },
+  "keywords": [
+    "lodash",
+    "merge"
+  ],
+  "author": "Robin C. Ladiges",
+  "license": "MPL-2.0",
+  "licenses": [
+    {
+      "type": "MPL-2.0",
+      "url": "https://github.com/Istador/lodash-es-merge-undefined/raw/public/LICENSE.md"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/Istador/lodash-es-merge-undefined/issues"
+  },
+  "homepage": "https://github.com/Istador/lodash-es-merge-undefined",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  },
+  "dependencies": {
+    "lodash-es": "^4.17.21"
+  }
+}
