@@ -1,5 +1,5 @@
-import mapValues from 'lodash-es/mapValues'
-import mergeWith from 'lodash-es/mergeWith'
+import mapValues from 'lodash-es/mapValues.js'
+import mergeWith from 'lodash-es/mergeWith.js'
 
 // marker object to return undefined from mergeWith, without it triggering the default merge algorithm
 const UNDEFINED = new Object()

@@ -1,6 +1,6 @@
 {
   "name": "lodash-es-merge-undefined",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "a version of merge that does overwrite undefined values",
   "type": "module",
   "jsnext:main": "index.js",
@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/Istador/lodash-es-merge-undefined",
   "devDependencies": {
-    "jest": "^26.6.3"
+    "jest": "^27.0.3"
   },
   "dependencies": {
     "lodash-es": "^4.17.21"
