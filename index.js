@@ -1,5 +1,6 @@
 import mapValues from 'lodash-es/mapValues.js'
 import mergeWith from 'lodash-es/mergeWith.js'
+import isObject from 'lodash-es/isObject.js'
 
 // marker object to return undefined from mergeWith, without it triggering the default merge algorithm
 const UNDEFINED = new Object()
@@ -11,6 +12,8 @@ const toUndefined = v => (
   : (
     Array.isArray(v)
     ? v.map(toUndefined)
+    : isObject(v)
+    ? mapValues(v, toUndefined)
     : v
   )
 )
