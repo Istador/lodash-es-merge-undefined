@@ -1,4 +1,4 @@
-# lodash-es-merge-undefined [![npm][npm-image]][npm-url]
+# lodash-es-merge-undefined [![npm][npm-image]][npm-url] [![test](https://github.com/Istador/lodash-es-merge-undefined/actions/workflows/test.yaml/badge.svg?branch=public)](https://github.com/Istador/lodash-es-merge-undefined/actions/workflows/test.yaml)
 
 [npm-image]: https://img.shields.io/npm/v/lodash-es-merge-undefined.svg
 [npm-url]: https://npmjs.org/package/lodash-es-merge-undefined
