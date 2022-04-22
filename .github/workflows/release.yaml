@@ -5,6 +5,8 @@ on:
     tags:
     - '*.*.*'
 
+concurrency: ${{ github.workflow }}
+
 jobs:
 
   test:
