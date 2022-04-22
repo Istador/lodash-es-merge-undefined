@@ -1,0 +1,23 @@
+name: Test
+
+inputs:
+  node:
+    description : 'Node Version'
+    required    : true
+
+runs:
+  using: composite
+  steps:
+  -
+    name: Install Node ${{ inputs.node }}
+    uses: actions/setup-node@v3
+    with:
+      node-version: ${{ inputs.node }}
+  -
+    name: Install dependencies
+    run: npm ci
+    shell: bash
+  -
+    name: Run tests
+    run: npm run test
+    shell: bash
