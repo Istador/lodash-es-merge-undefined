@@ -1,0 +1,24 @@
+name: Deploy
+
+inputs:
+  node:
+    description : 'Node Version'
+    required    : true
+  token:
+    description : 'NPM Access Token'
+    required    : true
+
+runs:
+  using: composite
+  steps:
+  -
+    name: Install Node ${{ inputs.node }}
+    uses: actions/setup-node@v3
+    with:
+      node-version: ${{ inputs.node }}
+  -
+    name: Publish to NPM
+    run: npm publish --access=public
+    shell: bash
+    env:
+      NODE_AUTH_TOKEN: ${{ inputs.token }}
