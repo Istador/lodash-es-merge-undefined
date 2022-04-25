@@ -1,7 +1,31 @@
 import merge from '.'
 
 describe('merge', () => {
-  it('basic', () => {
+  it('plain value', () => {
+    expect(merge({ a: 1 }, { a: 2 })).toEqual({ a: 2 })
+  })
+
+  it('plain undefined', () => {
+    expect(merge({ a: 1 }, { a: undefined })).toEqual({ a: undefined })
+  })
+
+  it('deep object value', () => {
+    expect(merge({ a: 1 }, { a: { b: 2 } })).toEqual({ a: { b: 2 } })
+  })
+
+  it('deep object undefined', () => {
+    expect(merge({ a: 1 }, { a: { b: undefined } })).toEqual({ a: { b: undefined } })
+  })
+
+  it('deep array value', () => {
+    expect(merge({ a: 1 }, { a: [ 2 ] })).toEqual({ a: [ 2 ] })
+  })
+
+  it('deep array undefined', () => {
+    expect(merge({ a: 1 }, { a: [ undefined ] })).toEqual({ a: [ undefined ] })
+  })
+
+  it('extended example', () => {
     const a = { a: 1, a1: 1, a2: undefined, b: 1, c: 1, arr: [ 1, 1, 1 ], obj: { x: 1 } }
     const b = { b: 2, b1: 2, b2: undefined, arr: [ 2, 2 ], obj: { x: 2 } }
     const c = { c: 3, c1: 3, c2: undefined, arr: [ 3 ], obj: { x: 3 } }
@@ -18,7 +42,8 @@ describe('merge', () => {
       arr : [ 3, 2, 1 ],
       obj : { x: 3 },
     })
-  }),
+  })
+
   it('simple with undefined', () => {
     const a = { a: 1, b: 1, c: 1 }
     const b = { b: 2, c: undefined, d: 2, e: undefined }
@@ -32,7 +57,8 @@ describe('merge', () => {
       f: undefined,
       g: 3,
     })
-  }),
+  })
+
   it('deep with undefined', () => {
     const a = {
       a: 1,
@@ -81,4 +107,36 @@ describe('merge', () => {
       arr: [ { a: 1, b: 3, c: undefined, d: 3, e: undefined }, 3, undefined, 3, 3, undefined, 1 ],
     })
   })
+
+  it('replace object with deep undefined', () => {
+    const target   = { a: 'any' };
+    const source   = { a: { b: undefined } }
+    const expected = { a: { b: undefined } }
+    expect(merge(target, source)).toEqual(expected)
+  })
+
+  it('deep deep object', () => {
+    const a = { x: 1, y: 1,         deep: { x: 1, y: 1, deeper: { x: 1, y: 1,         deepest: { x: 1, y: 1 } } } }
+    const b = {                     deep: {             deeper: { x: 2, y: undefined, deepest: { x: 2, y: undefined } } } }
+    const c = { x: 3, y: undefined, deep: { x: 3,       deeper: {               z: 3, deepest: {               z: 3 } } } }
+    expect(merge(a, b, c)).toEqual({
+      x: 3,
+      y: undefined,
+      deep: {
+        x: 3,
+        y: 1,
+        deeper: {
+          x: 2,
+          y: undefined,
+          z: 3,
+          deepest: {
+            x: 2,
+            y: undefined,
+            z: 3,
+          }
+        }
+      }
+    })
+  })
+
 })
