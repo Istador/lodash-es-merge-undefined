@@ -81,4 +81,11 @@ describe('merge', () => {
       arr: [ { a: 1, b: 3, c: undefined, d: 3, e: undefined }, 3, undefined, 3, 3, undefined, 1 ],
     })
   })
+
+  it('should keep undefined of target deep objects if source has different type of property to replace', async () => {
+    const target = {a: 'any'};
+    const source = {a: {a_1: undefined}}
+    expect(merge(target, source)).toEqual({a: {a_1: undefined}})
+  });
+
 })
