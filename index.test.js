@@ -18,7 +18,8 @@ describe('merge', () => {
       arr : [ 3, 2, 1 ],
       obj : { x: 3 },
     })
-  }),
+  })
+
   it('simple with undefined', () => {
     const a = { a: 1, b: 1, c: 1 }
     const b = { b: 2, c: undefined, d: 2, e: undefined }
@@ -32,7 +33,8 @@ describe('merge', () => {
       f: undefined,
       g: 3,
     })
-  }),
+  })
+
   it('deep with undefined', () => {
     const a = {
       a: 1,
@@ -82,10 +84,11 @@ describe('merge', () => {
     })
   })
 
-  it('should keep undefined of target deep objects if source has different type of property to replace', async () => {
-    const target = {a: 'any'};
-    const source = {a: {a_1: undefined}}
-    expect(merge(target, source)).toEqual({a: {a_1: undefined}})
-  });
+  it('replace object with deep undefined', () => {
+    const target   = { a: 'any' };
+    const source   = { a: { b: undefined } }
+    const expected = { a: { b: undefined } }
+    expect(merge(target, source)).toEqual(expected)
+  })
 
 })

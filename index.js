@@ -12,9 +12,11 @@ const toUndefined = v => (
   : (
     Array.isArray(v)
     ? v.map(toUndefined)
-    : isObject(v)
-    ? mapValues(v, toUndefined)
-    : v
+    : (
+      isObject(v)
+      ? mapValues(v, toUndefined)
+      : v
+    )
   )
 )
 
