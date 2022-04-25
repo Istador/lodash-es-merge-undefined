@@ -16,9 +16,10 @@ runs:
     uses: actions/setup-node@v3
     with:
       node-version: ${{ inputs.node }}
+      registry-url: 'https://registry.npmjs.org'
+    env:
+      NODE_AUTH_TOKEN: ${{ inputs.token }}
   -
     name: Publish to NPM
     run: npm publish --access=public
     shell: bash
-    env:
-      NODE_AUTH_TOKEN: ${{ inputs.token }}
