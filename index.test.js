@@ -25,6 +25,25 @@ describe('merge', () => {
     expect(merge({ a: 1 }, { a: [ undefined ] })).toEqual({ a: [ undefined ] })
   })
 
+  it('keep function', () => {
+    const f = () => {}
+    expect({ f, a: 'a' }).toEqual(merge({ f }, { a: 'a' }))
+  })
+
+  it('replace function w/ function', () => {
+    const f1 = () => {}
+    const f2 = () => {}
+    expect(merge({ f: f1 }, { f: f2 })).toEqual({ f: f2 })
+  })
+
+  it('replace function w/ value', () => {
+    expect(merge({ f: () => {} }, { f: 2 })).toEqual({ f: 2 })
+  })
+
+  it('replace function w/ undefined', () => {
+    expect(merge({ f: () => {} }, { f: undefined })).toEqual({ f: undefined })
+  })
+
   it('extended example', () => {
     const a = { a: 1, a1: 1, a2: undefined, b: 1, c: 1, arr: [ 1, 1, 1 ], obj: { x: 1 } }
     const b = { b: 2, b1: 2, b2: undefined, arr: [ 2, 2 ], obj: { x: 2 } }

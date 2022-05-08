@@ -1,6 +1,6 @@
 {
   "name": "lodash-es-merge-undefined",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "a version of merge that does overwrite undefined values",
   "type": "module",
   "jsnext:main": "index.js",
