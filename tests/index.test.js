@@ -1,4 +1,4 @@
-import merge from '.'
+import merge from '..'
 
 describe('merge', () => {
   it('plain value', () => {
