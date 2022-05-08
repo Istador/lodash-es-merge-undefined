@@ -12,7 +12,7 @@ const toUndefined = v => (
     Array.isArray(v)
     ? v.map(toUndefined)
     : (
-      typeof v === 'object'
+      typeof v === 'object' && v !== null
       ? mapValues(v, toUndefined)
       : v
     )
@@ -25,7 +25,7 @@ export const merge = (...args) => mapValues(
     (a, b) => {
       if (b === undefined) { return UNDEFINED }
       if (Array.isArray(a) || Array.isArray(b)) { return undefined }
-      if (typeof a === 'object' && typeof b === 'object') { return merge(a, b) }
+      if (typeof a === 'object' && typeof b === 'object' && a !== null && b !== null) { return merge(a, b) }
       return undefined
     }
   ),

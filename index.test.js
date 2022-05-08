@@ -9,6 +9,10 @@ describe('merge', () => {
     expect(merge({ a: 1 }, { a: undefined })).toEqual({ a: undefined })
   })
 
+  it('plain null', () => {
+    expect(merge({ a: 1 }, { a: null })).toEqual({ a: null })
+  })
+
   it('deep object value', () => {
     expect(merge({ a: 1 }, { a: { b: 2 } })).toEqual({ a: { b: 2 } })
   })
@@ -17,12 +21,20 @@ describe('merge', () => {
     expect(merge({ a: 1 }, { a: { b: undefined } })).toEqual({ a: { b: undefined } })
   })
 
+  it('deep object null', () => {
+    expect(merge({ a: 1 }, { a: { b: null } })).toEqual({ a: { b: null } })
+  })
+
   it('deep array value', () => {
     expect(merge({ a: 1 }, { a: [ 2 ] })).toEqual({ a: [ 2 ] })
   })
 
   it('deep array undefined', () => {
     expect(merge({ a: 1 }, { a: [ undefined ] })).toEqual({ a: [ undefined ] })
+  })
+
+  it('deep array null', () => {
+    expect(merge({ a: 1 }, { a: [ null ] })).toEqual({ a: [ null ] })
   })
 
   it('keep function', () => {
